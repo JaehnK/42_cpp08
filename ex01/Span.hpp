@@ -32,9 +32,14 @@ public:
     template <typename T>
     void            addNumbers( T &numbers )
     {
-        typename T::iterator it = numbers.begin();
-        while (it != numbers.end())
-            addNumber(*it++);
+        size_t          available;
+
+        available = this->vec.capacity() - this->vec.size();
+        if (static_cast<size_t> (std::distance(numbers.begin(), numbers.end())) 
+                >  available)
+            throw SpanCapacityException();
+
+        this->vec.insert(this->vec.end(), numbers.begin(), numbers.end());
     };
 
     unsigned int    shortestSpan( void ) const;
