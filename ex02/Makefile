@@ -2,10 +2,8 @@ C++ = c++
 CPP_FLAGS = -Wall -Werror -Wextra -std=c++98
 
 SRCS =	main.cpp \
-		MutantStack.cpp
 
-HEADR =	Span.hpp \
-		MutantStack.hpp \
+HEADR = MutantStack.hpp \
 
 
 OBJS = $(SRCS:.cpp=.o)

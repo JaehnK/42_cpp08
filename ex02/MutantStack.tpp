@@ -1,14 +1,18 @@
 #include "MutantStack.hpp"
 
-MutantStack::MutantStack()
+template < typename T, typename _Sequence >
+MutantStack<T, _Sequence>::MutantStack():std::stack<T>()
 {}
 
-MutantStack::MutantStack( MutantStack &rhs )
+template < typename T, typename _Sequence >
+MutantStack<T, _Sequence>::MutantStack( MutantStack &rhs )
 {
     *this = rhs;
 }
 
-MutantStack     &MutantStack::MutantStack( MutantStack &rhs )
+template < typename T, typename _Sequence >
+MutantStack<T, _Sequence>   &MutantStack<T, _Sequence>::operator=
+                            ( const MutantStack<T, _Sequence> &rhs )
 {
     if (*this != rhs)
     {
@@ -17,30 +21,34 @@ MutantStack     &MutantStack::MutantStack( MutantStack &rhs )
     return *this;
 }
 
-MutantStack::~MutantStack()
+template < typename T, typename _Sequence >
+MutantStack<T, _Sequence>::~MutantStack()
 {}
 
-iterator    MutantStack::begin()
+template < typename T, typename _Sequence >
+typename MutantStack<T>::container_type::iterator
+                            MutantStack<T, _Sequence>::begin()
 {
     return this->c.begin();
 }
 
-iterator    MutantStack::end()
+template < typename T, typename _Sequence >
+typename MutantStack<T>::container_type::iterator
+                            MutantStack<T, _Sequence>::end()
+{
+    return this->c.end();
+}
+
+template < typename T, typename _Sequence >
+typename MutantStack<T>::container_type::const_iterator
+                            MutantStack<T, _Sequence>::cbegin() const
 {
     return this->c.begin();
 }
 
-const_iterator    MutantStack::cbegin() const
+template < typename T, typename _Sequence >
+typename MutantStack<T>::container_type::const_iterator
+                            MutantStack<T, _Sequence>::cend() const
 {
-    return this->c.begin();
-}
-
-const_iterator    MutantStack::cend() const
-{
-    return this->c.begin();
-}
-
-const_iterator    MutantStack::cbegin() const
-{
-    return this->c.begin();
+    return this->c.end();
 }

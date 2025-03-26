@@ -20,7 +20,7 @@ void    easyfind(T &container, int value)
     it = std::find(container.begin(), container.end(), value);
     
     if (it == container.end())
-        std::cout << "Failed to Find value" << std::endl;
+        std::cerr << "Failed to Find value" << std::endl;
     else
         std::cout << *it << std::endl;
     
